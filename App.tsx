@@ -1,9 +1,10 @@
-import { StatusBar, Text, View } from 'react-native'
-import AntDesign from '@expo/vector-icons/AntDesign';
-
-import '@/styles/global.css'
 import { useCallback, useEffect, useState } from 'react';
 import { SplashScreen } from 'expo-router';
+
+import { Onboarding } from '@/screens/Onboarding/onboarding';
+
+import '@/styles/global.css'
+import { View } from 'react-native';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -32,12 +33,8 @@ export default function App() {
   }
 
   return (
-    <>
-      <View
-        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-        onLayout={onLayoutRootView}>
-        <Text>SplashScreen Demo! 👋</Text>
-      </View>
-    </>
+    <View onLayout={onLayoutRootView} className="flex-1 justify-center items-center">
+      <Onboarding />
+    </View>
   )
 }
