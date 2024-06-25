@@ -1,5 +1,5 @@
 import { type VariantProps, cva } from 'class-variance-authority';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableHighlight, TouchableOpacity } from 'react-native';
 
 import { cn } from '../lib/utils';
 import { ReactNode } from 'react';
@@ -67,6 +67,7 @@ function Button({
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     >
+        {props.children}
     </TouchableOpacity>
   );
 }
