@@ -1,10 +1,22 @@
-import { Text, TouchableOpacity, View } from "react-native";
+// src/screens/SignIn/index.tsx
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Button } from '@/components/Button';
+import { Social } from './components/social';
+import { Form } from './components/form';
+import { RootStackParamList } from '@/types/types';
 
-import { Button } from "@/components/Button";
-import { Social } from "./components/social";
-import { Form } from "./components/form";
+type SignInScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'SignIn'
+>;
 
-export function SignIn() {
+type Props = {
+  navigation: SignInScreenNavigationProp;
+};
+
+export function SignIn({ navigation }: Props) {
   return (
     <View className="flex-1 w-full pt-16 px-6 pb-6 justify-between items-center">
       <View className="gap-8">
@@ -14,7 +26,7 @@ export function SignIn() {
             <Text className="font-medium text-base text-[#667085]">Entre na sua conta</Text>
           </View>
           
-          <Form />
+          <Form navigation={navigation}/>
         </View>
         
         <Button className="bg-[#1A43BF] py-2.5 rounded-lg">
@@ -29,12 +41,14 @@ export function SignIn() {
         </Social.Root>
       </View>
 
-      <View className=" flex-row items-center gap-1 text-sm text-black leading-[17.5px]">
+
+
+      <View className="flex-row items-center gap-1 text-sm text-black leading-[17.5px]">
         <Text>Não tem uma conta?</Text>
         <TouchableOpacity>
           <Text className="font-semibold underline">Cadastre-se</Text>
         </TouchableOpacity>
       </View>
     </View>
-  )
+  );
 }
