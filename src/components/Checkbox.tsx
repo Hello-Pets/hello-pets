@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
-
 import { cn } from '../lib/utils';
 
-// TODO: make controlled (optional)
 interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof View> {
   label?: string;
-  labelClasses?: string;
-  checkboxClasses?: string;
+  labelClasses?: object;
+  checkboxClasses?: object;
 }
+
 function Checkbox({
   label,
   labelClasses,
@@ -17,36 +16,50 @@ function Checkbox({
   className,
   ...props
 }: CheckboxProps) {
-  const [isChecked, setChecked] = useState(false)
+  const [isChecked, setChecked] = useState(false);
 
   const toggleCheckbox = () => {
-    setChecked(prev => !prev)
-  }
+    setChecked(prev => !prev);
+  };
 
   return (
-    <View
-      className={cn('flex flex-row items-center gap-2', className)}
-      {...props}
-    >
+    <View style={[styles.container, className]} {...props}>
       <TouchableOpacity onPress={toggleCheckbox}>
-        <View
-          className={cn(
-            'w-4 h-4 border border-[#101828] rounded bg-background flex justify-center items-center',
-            {
-              'bg-[#101828]': isChecked,
-            },
-            checkboxClasses
-          )}
-        >
-          {
-            isChecked && <AntDesign name="check" size={12} color="#F5F5F5" />}
+        <View style={[styles.checkbox, isChecked && styles.checked, checkboxClasses]}>
+          {isChecked && <AntDesign name="check" size={12} color="#F5F5F5" />}
         </View>
       </TouchableOpacity>
       {label && (
-        <Text className={cn('text-xs', labelClasses)}>{label}</Text>
+        <Text style={[styles.label, labelClasses]}>{label}</Text>
       )}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    borderWidth: 1,
+    borderColor: '#E0E5F2',
+    borderRadius: 4,
+    marginRight: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  checked: {
+    backgroundColor: '#101828',
+  },
+  label: {
+    fontSize: 12,
+    lineHeight: 15,
+    fontFamily: 'Poppins-Regular',
+    color: '#000000',
+  },
+});
 
 export { Checkbox };

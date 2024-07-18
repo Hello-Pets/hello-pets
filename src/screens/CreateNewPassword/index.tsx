@@ -1,45 +1,56 @@
-// src/screens/ForgotPassword/index.tsx
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Input } from '@/components/Input'; 
 import { RootStackParamList } from '@/types/types';
 
-type ForgotPasswordScreenNavigationProp = NativeStackNavigationProp<
+type CreateNewPasswordScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'ForgotPassword'
+  'CreateNewPassword'
 >;
 
 type Props = {
-  navigation: ForgotPasswordScreenNavigationProp;
+  navigation: CreateNewPasswordScreenNavigationProp;
 };
 
-const ForgotPassword: React.FC<Props> = ({ navigation }) => {
-  const [email, setEmail] = useState('');
+const CreateNewPassword: React.FC<Props> = ({ navigation }) => {
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSendCode = () => {
-    console.log('Enviando código para:', email);
-    navigation.navigate('EmailCode');
+  const handleCreatePassword = () => {
+    console.log('Nova senha criada:', password);
+    navigation.navigate('PasswordChangedSuccess');
+    
   };
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <View style={styles.content}>
-          <Text style={styles.title}>Esqueceu sua senha?</Text>
+          <Text style={styles.title}>Crie uma nova senha</Text>
           <Text style={styles.subtitle}>
-            Tudo bem, acontece! Por favor, insira seu e-mail e nós enviaremos um código de verificação.
+            Sua nova senha deve ser diferente da última.
           </Text>
-          <Text style={styles.label}>Email</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite seu email"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-            autoCapitalize="none"
+          <Input
+            label="Senha"
+            placeholder="Digite sua senha"
+            inputType="password"
+            value={password}
+            onChangeText={setPassword}
+            labelStyle={styles.inputLabel}
+            inputStyle={styles.input}
           />
-          <TouchableOpacity onPress={handleSendCode} style={styles.button}>
-            <Text style={styles.buttonText}>Enviar código</Text>
+          <Input
+            label="Confirme sua senha"
+            placeholder="Digite sua senha novamente"
+            inputType="password"
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            labelStyle={styles.inputLabel}
+            inputStyle={styles.input}
+          />
+          <TouchableOpacity onPress={handleCreatePassword} style={styles.button}>
+            <Text style={styles.buttonText}>Alterar senha</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.footer}>
@@ -62,7 +73,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     paddingHorizontal: 24,
-    paddingTop: 16,
   },
   content: {
     paddingTop: 63,
@@ -70,9 +80,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    lineHeight: 32,
+    lineHeight: 31,
     marginBottom: 10,
-    fontFamily: 'Poppins-Bold'
+    fontFamily: 'Poppins-Bold',
+    marginTop: 16
   },
   subtitle: {
     fontSize: 14,
@@ -82,21 +93,23 @@ const styles = StyleSheet.create({
     color: '#838BA1',
     letterSpacing: -0.02,
   },
-  label: {
+  inputLabel: {
     fontSize: 14,
-    marginBottom: 5,
-    fontFamily: 'Poppins-Medium',
     lineHeight: 20,
+    fontFamily: 'Poppins-Medium',
+    color: '#344054',
   },
   input: {
     borderWidth: 1,
     borderColor: '#E0E5F2',
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 20,
-    fontFamily: 'Poppins-Regular',
+    borderRadius: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
     fontSize: 16,
     lineHeight: 24,
+    color: '#1E232C',
+    fontFamily: 'Poppins-Regular',
+    marginVertical: 8,
   },
   button: {
     backgroundColor: '#1A43BF',
@@ -104,15 +117,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     marginVertical: 8,
-
   },
   buttonText: {
     color: '#FAFAFA',
     fontSize: 14,
     fontFamily: 'Poppins-SemiBold',
     lineHeight: 20,
-
-
   },
   footer: {
     flexDirection: 'row',
@@ -137,4 +147,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ForgotPassword;
+export default CreateNewPassword;

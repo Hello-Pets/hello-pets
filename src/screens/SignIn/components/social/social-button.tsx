@@ -1,21 +1,51 @@
-import { Image, Text, TouchableOpacity } from "react-native";
-
+import React from 'react';
+import { Image, Text, StyleSheet, View } from 'react-native';
 import { Button } from "@/components/Button";
+import Google from '@/assets/icons/google.png';
+import Facebook from '@/assets/icons/facebook.png';
 
-import Google from '@/assets/icons/google.png'
-import Facebook from '@/assets/icons/facebook.png'
-
-type SocialButtonType =  'google' | 'facebook'
+type SocialButtonType = 'google' | 'facebook';
 
 interface SocialButtonProps {
-  type: SocialButtonType
+  type: SocialButtonType;
 }
 
 export function SocialButton({ type }: SocialButtonProps) {
   return (
-    <Button className="gap-4 w-full h-max py-3 border-[#E8E8E8] border-[1px]" variant="default">
-      <Image source={type === 'google' ? Google : Facebook} className="w-4 h-4" />
-      <Text className="text-xs font-medium text-[#121212] leading-6">{type === 'google' ? 'Entre com Google' : 'Entre com Facebook'}</Text>
+    <Button style={styles.button} variant="default">
+      <View style={styles.innerContainer}>
+        <Image source={type === 'google' ? Google : Facebook} style={styles.icon} />
+        <Text style={styles.text}>{type === 'google' ? 'Entre com Google' : 'Entre com Facebook'}</Text>
+      </View>
     </Button>
-  )
+  );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    width: 312,
+    height: 48,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#E8E8E8',
+    paddingHorizontal: 85,
+    justifyContent: 'center',
+    alignItems: 'center',
+    
+  },
+  innerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    width: 16, // Ajuste conforme necessário
+    height: 16, // Ajuste conforme necessário
+    marginRight: 8,
+  },
+  text: {
+    fontFamily: 'Poppins-Medium',
+    fontSize: 12,
+    lineHeight: 24,
+    color: '#121212',
+  },
+});

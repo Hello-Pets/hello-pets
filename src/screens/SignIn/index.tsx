@@ -1,6 +1,5 @@
-// src/screens/SignIn/index.tsx
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Button } from '@/components/Button';
 import { Social } from './components/social';
@@ -18,22 +17,17 @@ type Props = {
 
 export function SignIn({ navigation }: Props) {
   return (
-    <View className="flex-1 w-full pt-16 px-6 pb-6 justify-between items-center">
-      <View className="gap-8">
-        <View className="pt-4 gap-5">
-          <View className="gap-2">
-            <Text className="font-bold text-2xl text-[#1E232C]">Olá, que bom ver você de novo!</Text>
-            <Text className="font-medium text-base text-[#667085]">Entre na sua conta</Text>
-          </View>
-          
-          <Form navigation={navigation}/>
-        </View>
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.title}>Olá, que bom ver você de novo!</Text>
+        <Text style={styles.subtitle}>Entre na sua conta</Text>
         
-        <Button className="bg-[#1A43BF] py-2.5 rounded-lg">
-          <Text className="text-[#FAFAFA] text-base font-semibold leading-5">
-            Entrar
-          </Text>
+        <Form navigation={navigation} />
+        
+        <Button style={styles.button}>
+          <Text style={styles.buttonText}>Entrar</Text>
         </Button>
+
 
         <Social.Root>
           <Social.Button type="google" />
@@ -41,14 +35,80 @@ export function SignIn({ navigation }: Props) {
         </Social.Root>
       </View>
 
-
-
-      <View className="flex-row items-center gap-1 text-sm text-black leading-[17.5px]">
-        <Text>Não tem uma conta?</Text>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>Não possui uma conta?</Text>
         <TouchableOpacity>
-          <Text className="font-semibold underline">Cadastre-se</Text>
+          <Text style={styles.footerLink}>Cadastre-se</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#fff',
+    justifyContent: 'space-between',
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    paddingBottom:48,
+  },
+  title: {
+    color: '#1E232C',
+    fontFamily: 'Poppins-Bold',
+    fontSize: 24,
+    lineHeight: 31.2,
+    marginBottom: 8,
+    marginTop: 16,
+  },
+  subtitle: {
+    color: '#667085',
+    fontFamily: 'Lato-Regular',
+    fontSize: 16,
+    lineHeight: 21,
+    marginBottom: 16,
+    fontWeight: '500',
+  },
+  button: {
+    backgroundColor: '#1A43BF',
+    height: 40,
+    paddingVertical: 8,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 16,
+    marginTop: 8,
+  },
+  buttonText: {
+    color: '#FAFAFA',
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '600',
+    fontFamily: 'Poppins-SemiBold',
+    
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 24,
+  },
+  footerText: {
+    color: '#667085',
+    fontSize: 14,
+    lineHeight: 18,
+    fontFamily: 'Poppins-Regular',
+  },
+  footerLink: {
+    color: 'black',
+    fontSize: 14,
+    lineHeight: 18,
+    fontFamily: 'Poppins-SemiBold',
+    marginLeft: 4,
+    textDecorationLine: 'underline',
+  },
+});

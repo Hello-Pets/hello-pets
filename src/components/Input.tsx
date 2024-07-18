@@ -1,38 +1,34 @@
 import { forwardRef, useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View, StyleSheet, TextInputProps } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
-
 import { cn } from '../lib/utils';
 
-type InputType = 'text' | 'password'
+type InputType = 'text' | 'password';
 
-export interface InputProps
-  extends React.ComponentPropsWithoutRef<typeof TextInput> {
+export interface InputProps extends TextInputProps {
   label?: string;
-  labelClasses?: string;
-  inputClasses?: string;
+  labelStyle?: object;
+  inputStyle?: object;
   inputType?: InputType;
 }
 
 const Input = forwardRef<React.ElementRef<typeof TextInput>, InputProps>(
-  ({ className, label, labelClasses, inputClasses, inputType = 'text', ...props }, ref) => {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  ({ className, label, labelStyle, inputStyle, inputType = 'text', ...props }, ref) => {
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     return (
-      <View className={cn('flex flex-col gap-1.5', className)}>
-        {label && <Text className={cn('text-sm color-[#344054] leading-5 font-medium', labelClasses)}>{label}</Text>}
-        <View>
+      <View style={styles.container}>
+        {label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
+        <View style={styles.inputWrapper}>
           <TextInput
-            className={cn(
-              inputClasses,
-              'border border-input py-2.5 px-3 rounded-lg relative h-11 text-[#101828] text-base placeholder:text-[#667085] leading-6'
-            )}
-            {...props}
+            style={[styles.input, inputStyle]}
+            placeholderTextColor="#667085"
             secureTextEntry={inputType === 'password' && !isPasswordVisible}
             autoCapitalize="none"
+            {...props}
           />
           {inputType === 'password' && (
-            <TouchableOpacity className="absolute right-4 top-1/2 -translate-y-1/2" onPress={() => setIsPasswordVisible((prev) => !prev)}>
+            <TouchableOpacity style={styles.icon} onPress={() => setIsPasswordVisible((prev) => !prev)}>
               <Feather
                 name={isPasswordVisible ? 'eye-off' : 'eye'}
                 size={20}
@@ -42,8 +38,41 @@ const Input = forwardRef<React.ElementRef<typeof TextInput>, InputProps>(
           )}
         </View>
       </View>
-    )
+    );
   }
 );
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    marginBottom: 8,
+  },
+  label: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: 'Poppins-Medium',
+    color: '#344054',
+  },
+  inputWrapper: {
+    position: 'relative',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#E0E5F2',
+    borderRadius: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#1E232C',
+    fontFamily: 'Poppins-Regular',
+  },
+  icon: {
+    position: 'absolute',
+    right: 14,
+    top: '50%',
+    transform: [{ translateY: -12 }],
+  },
+});
 
 export { Input };

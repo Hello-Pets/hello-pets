@@ -7,6 +7,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SignIn } from '@/screens/SignIn';
 import ForgotPassword from '@/screens/ForgotPassword';
 import EmailCode from '@/screens/EmailCode';
+import CreateNewPassword from '@/screens/CreateNewPassword';
+import PasswordChangedSuccess from '@/screens/PasswordChangedSuccess';
 import '@/styles/global.css';
 import { RootStackParamList } from '@/types/types';
 
@@ -21,6 +23,10 @@ export default function App() {
         await Font.loadAsync({
           'Lato-Regular': require('./assets/fonts/Lato-Regular.ttf'),
           'Lato-Bold': require('./assets/fonts/Lato-Bold.ttf'),
+          'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
+          'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf'),
+          'Poppins-Medium': require('./assets/fonts/Poppins-Medium.ttf'),
+          'Poppins-SemiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
         });
       } catch (e) {
         console.warn(e);
@@ -59,6 +65,16 @@ export default function App() {
           <Stack.Screen
             name="EmailCode"
             component={EmailCode} 
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CreateNewPassword"
+            component={CreateNewPassword} 
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="PasswordChangedSuccess"
+            component={PasswordChangedSuccess} 
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

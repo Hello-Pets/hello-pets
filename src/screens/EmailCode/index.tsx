@@ -1,4 +1,4 @@
-// src/screens/EmailCode/index.tsx
+
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -24,6 +24,7 @@ const EmailCode: React.FC<Props> = ({ navigation }) => {
 
   const handleConfirmCode = () => {
     console.log('Código de verificação:', code.join(''));
+    navigation.navigate('CreateNewPassword');
   };
 
   const handleResendCode = () => {
@@ -84,25 +85,29 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    lineHeight: 31,
     marginBottom: 10,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Bold'
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: 14,
     marginBottom: 20,
+    lineHeight: 21,
     fontFamily: 'Lato-Regular',
+    color: '#838BA1',
+    letterSpacing: -0.02,
   },
   codeContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20,
+    
   },
   codeInput: {
     width: 67,
     height: 70,
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: '#E0E5F2',
     borderRadius: 15,
     textAlign: 'center',
     fontSize: 14,
@@ -112,14 +117,18 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#1A43BF',
     paddingVertical: 10,
-    borderRadius: 5,
+    borderRadius: 8,
     alignItems: 'center',
+    marginVertical: 8,
+
   },
   buttonText: {
     color: '#FAFAFA',
-    fontSize: 16,
-    fontWeight: 'bold',
-    fontFamily: 'Poppins-Regular',
+    fontSize: 14,
+    fontFamily: 'Poppins-SemiBold',
+    lineHeight: 20,
+
+
   },
   resendLink: {
     alignItems: 'center',
@@ -134,20 +143,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 20,
+    paddingBottom: 24,
+    marginBottom: 16,
   },
   footerText: {
+    color: '#667085',
     fontSize: 14,
-    color: '#000',
+    lineHeight: 18,
     fontFamily: 'Poppins-Regular',
   },
   footerLink: {
+    color: 'black',
     fontSize: 14,
-    fontWeight: 'bold',
-    color: '#000',
+    lineHeight: 18,
+    fontFamily: 'Poppins-SemiBold',
+    marginLeft: 4,
     textDecorationLine: 'underline',
-    marginLeft: 5,
-    fontFamily: 'Poppins-Regular',
   },
 });
 
