@@ -6,6 +6,7 @@ import { Onboarding } from '@/screens/Onboarding/onboarding';
 import '@/styles/global.css'
 import { View } from 'react-native';
 import { SignIn } from '@/screens/SignIn';
+import { CreateNewPassword } from '@/screens/CreateNewPassword';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -35,7 +36,7 @@ export default function App() {
 
   return (
     <View onLayout={onLayoutRootView} className="flex-1 justify-center items-center">
-      <SignIn />
+      <CreateNewPassword />
     </View>
   )
 }
