@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { SplashScreen } from 'expo-router';
+import { PaperProvider } from 'react-native-paper';
 
 import { Onboarding } from '@/screens/Onboarding/onboarding';
 import { SignIn } from '@/screens/SignIn';
@@ -34,8 +35,10 @@ export default function App() {
   }
 
   return (
-    <View onLayout={onLayoutRootView}>
-      <SignIn />
-    </View>
+    <PaperProvider>
+      <View onLayout={onLayoutRootView}>
+        <SignIn />
+      </View>
+    </PaperProvider>
   )
 }
