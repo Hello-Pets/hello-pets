@@ -6,7 +6,7 @@ import { PaperProvider } from 'react-native-paper';
 import { Onboarding } from '@/screens/Onboarding/onboarding';
 import { SignIn } from '@/screens/SignIn';
 
-import '@/styles/global.css'
+import { theme } from '@/styles/theme';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -35,7 +35,7 @@ export default function App() {
   }
 
   return (
-    <PaperProvider>
+    <PaperProvider theme={theme}>
       <View onLayout={onLayoutRootView}>
         <SignIn />
       </View>

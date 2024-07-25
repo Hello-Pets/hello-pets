@@ -1,8 +1,8 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
+import { Button } from "react-native-paper";
 
 import { Social } from "./components/social";
 import { Form } from "./components/form";
-import { Button } from "react-native-paper";
 
 export function SignIn() {
   return (
