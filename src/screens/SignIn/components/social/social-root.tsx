@@ -7,13 +7,11 @@ interface SocialRootProps {
 
 export function SocialRoot({ children }: SocialRootProps) {
   return (
-    <View className="gap-4">
-    <View className="flex-row w-full items-center justify-between">
-      <View className="h-[1px] bg-[#E8ECF4] w-1/3" />
-      <Text className="text-xs leading-[18px] text-[#6A707C]">Ou entre com</Text>
-      <View className="h-[1px] bg-[#E8ECF4] w-1/3" />
+    <View>
+    <View>
+      <Text>Ou entre com</Text>
     </View>
-    <View className="gap-2">
+    <View>
       {children}
     </View>
   </View>

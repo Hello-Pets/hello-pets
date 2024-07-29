@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
+import { View } from 'react-native';
 import { SplashScreen } from 'expo-router';
+import { PaperProvider } from 'react-native-paper';
 
 import { Onboarding } from '@/screens/Onboarding/onboarding';
-
-import '@/styles/global.css'
-import { View } from 'react-native';
 import { SignIn } from '@/screens/SignIn';
+
+import { theme } from '@/styles/theme';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -34,8 +35,10 @@ export default function App() {
   }
 
   return (
-    <View onLayout={onLayoutRootView} className="flex-1 justify-center items-center">
-      <SignIn />
-    </View>
+    <PaperProvider theme={theme}>
+      <View onLayout={onLayoutRootView}>
+        <SignIn />
+      </View>
+    </PaperProvider>
   )
 }
