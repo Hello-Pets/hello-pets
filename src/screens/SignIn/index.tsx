@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 
-import { Button } from "@/components/button";
+import { Button } from "@/components/Button";
 
 export function SignIn() {
   return (
