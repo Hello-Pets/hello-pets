@@ -1,17 +1,13 @@
 import { Text, View } from "react-native";
-import { Button } from "react-native-paper";
 
-import { Social } from "./components/social";
-import { Form } from "./components/form";
+import { Button } from "@/components/button";
 
 export function SignIn() {
   return (
     <View>
       <Text>SignIn</Text>
 
-      <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-        Teste
-      </Button>
+      <Button type="DANGER" onPress={() => console.log('pressed')} size="SMALL" hasIcon />
     </View>
   )
 }
