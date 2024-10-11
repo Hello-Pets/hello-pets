@@ -31,7 +31,7 @@ export function Onboarding() {
   ];
 
   return (
-    <View className="flex-1 justify-center items-center">
+    <View>
       <Text>Onboarding</Text>
     </View>
   )

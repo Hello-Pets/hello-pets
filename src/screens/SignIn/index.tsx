@@ -1,40 +1,59 @@
-import { Text, TouchableOpacity, View } from "react-native";
-
-import { Button } from "@/components/Button";
-import { Social } from "./components/social";
-import { Form } from "./components/form";
+import * as S from './styles'
 
 export function SignIn() {
   return (
-    <View className="flex-1 w-full pt-16 px-6 pb-6 justify-between items-center">
-      <View className="gap-8">
-        <View className="pt-4 gap-5">
-          <View className="gap-2">
-            <Text className="font-bold text-2xl text-[#1E232C]">Olá, que bom ver você de novo!</Text>
-            <Text className="font-medium text-base text-[#667085]">Entre na sua conta</Text>
-          </View>
-          
-          <Form />
-        </View>
-        
-        <Button className="bg-[#1A43BF] py-2.5 rounded-lg">
-          <Text className="text-[#FAFAFA] text-base font-semibold leading-5">
-            Entrar
-          </Text>
-        </Button>
+    <S.Container>
+      <S.Header>
+        <S.Title>Olá! Que bom ver você de novo!</S.Title>
+        <S.Subtitle>Entre na sua conta</S.Subtitle>
+      </S.Header>
 
-        <Social.Root>
-          <Social.Button type="google" />
-          <Social.Button type="facebook" />
-        </Social.Root>
-      </View>
+      <S.Form>
+        <S.InputWrapper>
+          <S.InputLabel>E-mail</S.InputLabel>
+          <S.Input placeholder="Digite seu e-mail" />
+        </S.InputWrapper>
+        <S.InputWrapper>
+          <S.InputLabel>Senha</S.InputLabel>
+          <S.Input placeholder="Digite sua senha" />
+        </S.InputWrapper>
 
-      <View className=" flex-row items-center gap-1 text-sm text-black leading-[17.5px]">
-        <Text>Não tem uma conta?</Text>
-        <TouchableOpacity>
-          <Text className="font-semibold underline">Cadastre-se</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+        <S.ActionsButtons>
+          <S.RadioButtonWrapper>
+            <S.RadioButton />
+            <S.RadioButtonLabel>Lembrar de mim</S.RadioButtonLabel>
+          </S.RadioButtonWrapper>
+
+          <S.ForgotPassword>Esqueceu a senha?</S.ForgotPassword>
+        </S.ActionsButtons>
+      </S.Form>
+
+      <S.SubmitButton>
+        <S.SubmitButtonText>
+          Entrar
+        </S.SubmitButtonText>
+      </S.SubmitButton>
+
+      <S.DividerWrapper>
+        <S.Divider />
+        <S.DividerText>Ou entre com</S.DividerText>
+        <S.Divider />
+      </S.DividerWrapper>
+
+      <S.SocialButtonsWrapper>
+        <S.SocialButton>
+          <S.SocialButtonText>Entre com Google</S.SocialButtonText>
+        </S.SocialButton>
+        <S.SocialButton>
+          <S.SocialButtonText>Entre com Facebook</S.SocialButtonText>
+        </S.SocialButton>
+      </S.SocialButtonsWrapper>
+
+      <S.Footer>
+        <S.SignUp>
+          Não tem uma conta? <S.SignUpLink>Cadastre-se</S.SignUpLink>
+        </S.SignUp>
+      </S.Footer>
+    </S.Container>
   )
 }
