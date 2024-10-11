@@ -7,6 +7,7 @@ import { Onboarding } from '@/screens/Onboarding/onboarding';
 import { SignIn } from '@/screens/SignIn';
 
 import { theme } from '@/styles/theme';
+import { SignUp } from '@/screens/SignUp';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -37,7 +38,7 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
       <View onLayout={onLayoutRootView}>
-        <SignIn />
+        <SignUp />
       </View>
     </PaperProvider>
   )
