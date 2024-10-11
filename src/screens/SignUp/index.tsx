@@ -1,14 +1,17 @@
 import * as S from './styles'
 
-export function SignIn() {
+export function SignUp() {
   return (
     <S.Container>
       <S.Header>
-        <S.Title>Olá! Que bom ver você de novo!</S.Title>
-        <S.Subtitle>Entre na sua conta</S.Subtitle>
+        <S.Title>Criar uma conta</S.Title>
       </S.Header>
 
       <S.Form>
+        <S.InputWrapper>
+          <S.InputLabel>Nome</S.InputLabel>
+          <S.Input placeholder="Digite seu nome" />
+        </S.InputWrapper>
         <S.InputWrapper>
           <S.InputLabel>E-mail</S.InputLabel>
           <S.Input placeholder="Digite seu e-mail" />
@@ -21,10 +24,8 @@ export function SignIn() {
         <S.ActionsButtons>
           <S.RadioButtonWrapper>
             <S.RadioButton />
-            <S.RadioButtonLabel>Lembrar de mim</S.RadioButtonLabel>
+            <S.RadioButtonLabel>Eu aceito os <S.RadioButtonLabelLink>termos e politica de privacidade</S.RadioButtonLabelLink></S.RadioButtonLabel>
           </S.RadioButtonWrapper>
-
-          <S.ForgotPassword>Esqueceu a senha?</S.ForgotPassword>
         </S.ActionsButtons>
       </S.Form>
 
@@ -36,23 +37,23 @@ export function SignIn() {
 
       <S.DividerWrapper>
         <S.Divider />
-        <S.DividerText>Ou entre com</S.DividerText>
+        <S.DividerText>Ou cadastre com</S.DividerText>
         <S.Divider />
       </S.DividerWrapper>
 
       <S.SocialButtonsWrapper>
         <S.SocialButton>
-          <S.SocialButtonText>Entre com Google</S.SocialButtonText>
+          <S.SocialButtonText>Cadastre com Google</S.SocialButtonText>
         </S.SocialButton>
         <S.SocialButton>
-          <S.SocialButtonText>Entre com Facebook</S.SocialButtonText>
+          <S.SocialButtonText>Cadastre com Facebook</S.SocialButtonText>
         </S.SocialButton>
       </S.SocialButtonsWrapper>
 
       <S.Footer>
-        <S.SignUp>
-          Não tem uma conta? <S.SignUpLink>Cadastre-se</S.SignUpLink>
-        </S.SignUp>
+        <S.SignIn>
+          Já possui uma conta? <S.SignInLink>Entre</S.SignInLink>
+        </S.SignIn>
       </S.Footer>
     </S.Container>
   )
