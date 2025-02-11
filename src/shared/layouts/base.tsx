@@ -7,17 +7,16 @@ import {
 } from 'react-native'
 import { ReactNode } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
-interface LayoutProps {
+interface BaseLayoutProps {
   children: ReactNode
   barStyle?: StatusBarStyle
 }
 
-export function Layout({
+export function BaseLayout({
   children,
   barStyle = 'dark-content',
-}: LayoutProps) {
+}: BaseLayoutProps) {
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: '#FFFFFF' }}
@@ -28,9 +27,7 @@ export function Layout({
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          {children}
-        </TouchableWithoutFeedback>
+        {children}
       </KeyboardAvoidingView>
     </SafeAreaView >
   )
