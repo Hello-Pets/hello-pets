@@ -1,7 +1,7 @@
 import { Dimensions, FlatList, FlatListProps } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OnboardingProps } from '@/shared/constants/onboarding'
+import { OnboardingProps } from '@constants/onboarding'
 
 interface BulletProps {
   active: boolean
