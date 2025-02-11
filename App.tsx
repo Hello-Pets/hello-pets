@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
-import { View } from 'react-native';
 import { SplashScreen } from 'expo-router';
 import { PaperProvider } from 'react-native-paper';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { Onboarding } from '@/screens/Onboarding/onboarding';
-import { SignIn } from '@/screens/SignIn';
+import { Onboarding } from '@/modules/onboarding/screens/onboarding';
+import { SignIn } from '@/modules/auth/screens/sign-in';
+import { SignUp } from '@/modules/auth/screens/sign-up';
 
-import { theme } from '@/styles/theme';
-import { SignUp } from '@/screens/SignUp';
+import { theme } from '@/shared/styles/theme'
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -36,10 +36,10 @@ export default function App() {
   }
 
   return (
-    <PaperProvider theme={theme}>
-      <View onLayout={onLayoutRootView}>
-        <SignUp />
-      </View>
-    </PaperProvider>
+    <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+      <PaperProvider theme={theme}>
+        <Onboarding />
+      </PaperProvider>
+    </GestureHandlerRootView>
   )
 }
